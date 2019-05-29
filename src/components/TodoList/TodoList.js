@@ -5,15 +5,16 @@ import TodoListItem from '../TodoListItem';
 class TodoList extends Component {
 	
 	render() {
-		const {todos} = this.props;
-		const elements = todos.map((item, i)=>{
+		const {todos, onDeleted} = this.props;
+		const elements = todos.map((item)=>{
 			const {id, ...itemProps} = item;
 			return (<TodoListItem
 				key={id}
 				{...itemProps}
+				onDeleted={() => onDeleted(id)}
 			/>);
 		});
-		console.log(elements);
+		
 		return (
 			<ul className = "list-group todo-list">
 				{elements}
